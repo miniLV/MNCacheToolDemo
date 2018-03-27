@@ -31,6 +31,14 @@
     NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     return [modelClass yy_modelWithJSON:dict];
 }
+
++ (id) mn_getSaveModelArrayWithkey:(NSString *)key modelClass:(Class)modelClass{
+    
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    return [NSArray yy_modelArrayWithClass:[modelClass class] json:array];
+}
+
 @end
 
 
